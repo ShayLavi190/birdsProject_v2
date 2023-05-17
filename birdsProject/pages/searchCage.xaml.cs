@@ -73,12 +73,10 @@ namespace birdsProject.pages
             if (matirialindex == -1)
             {
                 Matirial = "-1";
-
             }
             else
             {
                 Matirial = matirials[matirialindex];
-
             }
             int num;
             int index = 2;

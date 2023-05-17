@@ -33,7 +33,7 @@
                     <TextBlock Text="to use all features" FontWeight="Light" FontSize="16" Foreground="#D1F2EB" TextAlignment="Center" Margin="0 15 0 3"/>
                     <TextBlock Text="of the application" FontWeight="Light" FontSize="16" Foreground="#D1F2EB" TextAlignment="Center"/>
                     <TextBlock Text="type valid id (only numbers and by length of 8)." FontWeight="Bold"  FontSize="14" Foreground="#D1F2EB" TextAlignment="Center" Margin="0 10 0 3"/>
-                    <TextBlock Text="type valid subspecie (only pink)" FontWeight="Bold"  FontSize="14" Foreground="#D1F2EB" TextAlignment="Center" Margin="0 5 0 3"/>
+                    <TextBlock Text="type valid subspecie" FontWeight="Bold"  FontSize="14" Foreground="#D1F2EB" TextAlignment="Center" Margin="0 5 0 3"/>
                     <TextBlock Text="type valid birth date (DD/MM/YY)" FontWeight="Bold"  FontSize="14" Foreground="#D1F2EB" TextAlignment="Center" Margin="0 0 0 3"/>
                     <TextBlock Text="type valid cage id (chars and numbers)" FontWeight="Bold"  FontSize="14" Foreground="#D1F2EB" TextAlignment="Center" Margin="0 5 0 3"/>
                     <TextBlock Text="type valid father id (only numbers ,length 8)" FontWeight="Bold"  FontSize="14" Foreground="#D1F2EB" TextAlignment="Center" Margin="0 0 0 3"/>
@@ -52,14 +52,19 @@
                 <StackPanel VerticalAlignment="Center" Margin="75,0,75,0">
                     <TextBox Name ="id" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-20" materialDesign:HintAssist.Hint="Id" Text="12345678" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <ComboBox Name ="birdSpecie" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-20" materialDesign:HintAssist.Hint="Specie" Margin="0 27 0 27" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                        <ComboBoxItem Content="Blue"></ComboBoxItem>
-                        <ComboBoxItem Content="Goldian"></ComboBoxItem>
-                        <ComboBoxItem Content="Straberry"></ComboBoxItem>
-                        <ComboBoxItem Content="Zebra"></ComboBoxItem>
-                        <ComboBoxItem Content="Saffron"></ComboBoxItem>
+                        <ComboBoxItem Content="American goldian"></ComboBoxItem>
+                        <ComboBoxItem Content="Australian goldian"></ComboBoxItem>
+                        <ComboBoxItem Content="Europian goldian"></ComboBoxItem>
                     </ComboBox>
-                    <TextBox Name ="subspecie" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-20" materialDesign:HintAssist.Hint="Subspecie" Text="Pink" Style="{StaticResource MaterialDesignFloatingHintTextBox}" RenderTransformOrigin="0.53,1.721" />
-                    <TextBox Name ="birthDate" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-20" materialDesign:HintAssist.Hint="Birth date" Text="19/02/99" Margin="0 27 0 27" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <ComboBox Name ="birdSubSpecie" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-20" materialDesign:HintAssist.Hint="Sub specie" Margin="0 27 0 27" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                        <ComboBoxItem Content="East europe"></ComboBoxItem>
+                        <ComboBoxItem Content="West europe"></ComboBoxItem>
+                        <ComboBoxItem Content="Center australia"></ComboBoxItem>
+                        <ComboBoxItem Content="Beach cities"></ComboBoxItem>
+                        <ComboBoxItem Content="North america"></ComboBoxItem>
+                        <ComboBoxItem Content="Center america"></ComboBoxItem>
+                        <ComboBoxItem Content="South america"></ComboBoxItem>
+                    </ComboBox>                    <TextBox Name ="birthDate" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-20" materialDesign:HintAssist.Hint="Birth date" Text="19/02/99" Margin="0 27 0 27" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
                     <ComboBox Name ="sex" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-20" materialDesign:HintAssist.Hint="Sex" Margin="0 27 0 27" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                         <ComboBoxItem Content="Male"></ComboBoxItem>
                         <ComboBoxItem Content="Female"></ComboBoxItem>

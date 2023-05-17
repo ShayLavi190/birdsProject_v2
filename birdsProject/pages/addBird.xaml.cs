@@ -46,8 +46,8 @@ namespace birdsProject.pages
         }
         private void Add(object sender, RoutedEventArgs e)
         {
-            string[] sexarray = { "Male", "Female"};
-            string[] birdSpeciesarray = { "Blue", "Goldian", "Straberry", "Zebra", "Saffron" };
+            string[] sexarray = { "Male", "Female" };
+            string[] birdSpeciesarray = { "American goldian", "Australian goldian", "Europian goldian" };
             string Id = id.Text;
             int birdSpecieindex = birdSpecie.SelectedIndex;
             string birdSpeciec;
@@ -58,9 +58,18 @@ namespace birdsProject.pages
             else
             {
                 birdSpeciec = birdSpeciesarray[birdSpecieindex];
-
             }
-            string subspeciec = subspecie.Text;
+            string[] birdSubSpeciesarray = { "Center america", "North america", "South america", "East europe", "West europe", "Center australia", "Beach cities" };
+            string subspeciec;
+            int birdSubSpecieindex = birdSubSpecie.SelectedIndex;
+            if (-1 == birdSubSpecieindex)
+            {
+                subspeciec = "-1";
+            }
+            else
+            {
+                subspeciec = birdSubSpeciesarray[birdSubSpecieindex];
+            }
             string birthDatec = birthDate.Text;
             int sexIndex = sex.SelectedIndex;
             string sexc;
@@ -70,13 +79,13 @@ namespace birdsProject.pages
             }
             else
             {
-                 sexc = sexarray[sexIndex];
+                sexc = sexarray[sexIndex];
 
             }
             string cageIdc = cageId.Text;
             string fatherIdc = fatherId.Text;
             string motherIdc = motherId.Text;
-            if((Id.Length == 8) && (subspeciec == "pink") && (cageIdc.Length == 8) && (fatherIdc.Length == 8) && (motherIdc.Length == 8) && (cageIsFound(cageIdc,'A')) && (IsFound(fatherIdc,'A')) && (IsFound(motherIdc, 'A')) && (!IsFound(Id,'A')) && (sexc!="-1") && (birdSpeciec!="-1"))
+            if ((Id.Length == 8) && (birdsmatch(subspeciec, birdSpeciec)) && (cageIdc.Length == 8) && (fatherIdc.Length == 8) && (motherIdc.Length == 8) && (cageIsFound(cageIdc, 'A')) && (IsFound(fatherIdc, 'A')) && (IsFound(motherIdc, 'A')) && (!IsFound(Id, 'A')) && (sexc != "-1") && (birdSpeciec != "-1"))
             {
                 SLDocument doc = new SLDocument(@"\\Mac\Home\Desktop\birdsProject-master\birdsProject\Data.xlsx");
                 doc.SelectWorksheet("Birds");
@@ -84,12 +93,12 @@ namespace birdsProject.pages
                 int flag = 0;
                 int index = 2;
                 int num;
-                if(!(int.TryParse(Id, out num)))
+                if (!(int.TryParse(Id, out num)))
                 {
                     flag = 1;
                 }
                 string[] arr = birthDatec.Split('/');
-                for (int i = 0;i<arr.Length;i++)
+                for (int i = 0; i < arr.Length; i++)
                 {
                     int numt;
                     bool isNumeric = int.TryParse(arr[i], out numt);
@@ -98,7 +107,7 @@ namespace birdsProject.pages
                         flag = 1;
                     }
                 }
-                if(flag == 1) { MessageBox.Show("An error occurred: The parameters are not valid. please try again and read the instractions in the left", "Error", MessageBoxButton.OK, MessageBoxImage.Error); }
+                if (flag == 1) { MessageBox.Show("An error occurred: The parameters are not valid. please try again and read the instractions in the left", "Error", MessageBoxButton.OK, MessageBoxImage.Error); }
                 else
                 {
                     while (cell != "")
@@ -123,16 +132,16 @@ namespace birdsProject.pages
                 MessageBox.Show("An error occurred: The parameters are not valid. please try again and read the instractions in the left", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        public bool IsFound (string id,char letter)
+        public bool IsFound(string id, char letter)
         {
             SLDocument doc = new SLDocument(@"\\Mac\Home\Desktop\birdsProject-master\birdsProject\Data.xlsx");
             doc.SelectWorksheet("Birds");
             int counter = 2;
             int flag = 0;
-            string cell = doc.GetCellValueAsString(""+letter+""+counter);
-            while (cell != "") 
+            string cell = doc.GetCellValueAsString("" + letter + "" + counter);
+            while (cell != "")
             {
-                if((id ==cell))
+                if ((id == cell))
                 {
                     counter++;
                     return true;
@@ -141,6 +150,31 @@ namespace birdsProject.pages
                 {
                     counter++;
                     cell = doc.GetCellValueAsString("" + letter + "" + counter);
+                }
+            }
+            return false;
+        }
+        public bool birdsmatch(string subspeciec, string birdSpeciec)
+        {
+            if(birdSpeciec== "American goldian")
+            {
+                if((subspeciec == "North america")||(subspeciec == "Center america")||(subspeciec=="South america"))
+                {
+                    return true;
+                }
+            }
+            if(birdSpeciec== "Australian goldian")
+            {
+                if ((subspeciec == "Center australia") || (subspeciec == "Beach cities"))
+                {
+                    return true;
+                }
+            }
+            if (birdSpeciec == "Europian goldian")
+            {
+                if ((subspeciec == "East europe") || (subspeciec == "West europe"))
+                {
+                    return true;
                 }
             }
             return false;
